@@ -1,18 +1,5 @@
-angular.module('myApp', []).
-  controller('myController', ['$scope', '$http',
-                              function($scope, $http) {
-    $http.get('/user/profile')
-        .success(function(data, status, headers, config) {
-      $scope.user = data;
-      $scope.error = "";
-    }).
-    error(function(data, status, headers, config) {
-      $scope.user = {};
-      $scope.error = data;
-    });
-  }]);
-  
-  angular.module('present', [])
+/*global angular*/
+angular.module('present', [])
     .controller('PresCtrl', [
         '$scope', '$http',
         function($scope, $http) {

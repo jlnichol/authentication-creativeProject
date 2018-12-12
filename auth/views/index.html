@@ -4,15 +4,34 @@
 <head>
     <title>User Login</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
-
+<script type="text/javascript">
+var done = 0;
+function HideText()
+{
+    if(done == 1) {
+    document.getElementById("lyrics").innerHTML = "I want a <%= color %> <%= animal %> for Christmas"
+    done = 2;
+    } else if (done == 2) {
+    document.getElementById("lyrics").innerHTML = "Rudolph, the <%= color %>-nosed <%= animal %>"
+    done = 0;
+    }else {
+        document.getElementById("lyrics").innerHTML = "On the first day of Christmas, my true love gave to me, a <%= animal %> in a pear tree"
+        done = 1;
+    }
+}
+function sendMessage()
+{
+   document.getElementById("response").innerHTML = "An elf is working on it."
+}
+</script>
 </head>
         
 <body> 
 <div id= "navbar">
     <ul>
   <li><a class="active" href="#home">Home</a></li>
-  <li><a id="logoutLink" href="/logout">Logout</a></li>
   <li><a id="editLink" href="/user">Edit User</a></li>
+  <li><a id="logoutLink" href="/logout">Logout</a></li>
 </ul>
 </div>
 <div id="mainText">
@@ -20,9 +39,26 @@
         <h2 id="welcomeText">Welcome, 
             <%= username %>
         </h2>
-        <p>Place Your Code Here
-            <p>
     </div>
+    <h1>Some Holiday Inspiration</h1>
+    <p id="lyrics">Rudolph, the <%= color %>-nosed <%= animal %></p>
+    <button type="button" onclick="HideText()">Click Here for Different lyrics</button>
+    <h1>Get Ready for Christmas</h1>
+    <div ng-controller="PresCtrl"></div>
+        <form ng-submit="addPresent()">
+        <label for="name">Who Wants It </label><input type="text" ng-model="name"></input><br><br>
+        <label for="price">Price </label><input type="text" ng-model="price"></input><br><br>
+        <label for="picture">Picture URL </label><input type="text" ng-model="picture"></input><br><br>
+        <button type="submit" onclick="sendMessage()">Send to Santa</button>
+        </form>
+        <p id="response"></p>
+        <div ng-repeat="present in presents | orderBy: 'name'">
+        <span class="glyphicon glyphicon-remove" ng-click="delete(present)"></span>
+        {{present.name}} - 
+        price {{present.price}}
+        <img src= {{present.url}} alt= {{present.name}}> <br>
+    </div>
+      </div>
     <hr>
     <span id="indexMsg">
         <%= msg %>
