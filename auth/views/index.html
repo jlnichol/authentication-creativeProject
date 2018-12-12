@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="myApp"> 
+    
+<head>
+    <title>User Login</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+
+</head>
+        
+<body> 
+<div id= "navbar">
+    <ul>
+  <li><a class="active" href="#home">Home</a></li>
+  <li><a id="logoutLink" href="/logout">Logout</a></li>
+  <li><a id="editLink" href="/user">Edit User</a></li>
+</ul>
+</div>
+<div id="mainText">
+    <div ng-controller="myController">
+        <h2 id="welcomeText">Welcome, 
+            <%= username %>
+        </h2>
+        <p>Place Your Code Here
+            <p>
+    </div>
+    <hr>
+    <span id="indexMsg">
+        <%= msg %>
+    </span>
+    <hr>
+    <span id="colorText">
+    You are a
+        <%= color %>
+      </span>
+      <span id="animalText">
+          <%= animal %>
+      </span>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/javascripts/my_app.js"></script>
+    </div>
+</body>
+      
+</html>

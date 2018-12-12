@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="myApp">
+    
+<head>
+    <title>User Login</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+</head>
+        
+<body>
+    <div id= "navbar">
+    <ul>
+  <li><a class="active" href="/">Home</a></li>
+</ul>
+</div>
+<div id="mainText">  
+    <div class="form-container" ng-controller="myController">
+        <p id="sectionTitle" class="form-header"><h2>User Profile</h2></p>
+        <form method="POST" action="/user/update">
+            <label>Username:</label>
+            <input type="text" id="username" name="username" ng-model="user.username" disabled><br><br>
+            <label>Email:</label>
+            <input type="email" id="email" name="email" ng-model="user.email"><br><br>      
+            <label>Favorite Color:</label>
+            <input type="text" id="color" name="color" ng-model="user.color"><br><br>
+            <label>Spirit Animal:</label>
+            <input type="text" id="animal" name="animal" ng-model="user.animal"><br><br>
+            <input type="submit" id="save" value="Save">
+        </form>
+    </div>
+    <br>
+    <form method="POST" action="/user/delete">
+        <input type="submit" id="delete" value="Delete User">
+    </form>
+    <hr>
+    <span id="userMsg">
+    <%= msg %>
+    </span>
+    <script src="http://code.angularjs.org/1.2.9/angular.min.js"></script>
+    <script src="/javascripts/my_app.js"></script>
+    </div>
+</body>
+
+</html>
